@@ -7,7 +7,7 @@ async def start(client, message):
     joinButton = InlineKeyboardMarkup([
         [InlineKeyboardButton("Channel", url="https://t.me/xjkg"), InlineKeyboardButton("Creator", url="https://telegram.me/a") ],
         [InlineKeyboardButton(
-            "🍿 Source Code 🍿", url="https://github.com/")]
+            "🍿 Source Code 🍿", url="https://github.com/hello")]
     ])
     welcomed = f"""Hey <b>{message.from_user.first_name}</b>\nA Simple YouTube Downloader Bot that can:
   ➠ Download YouTube videos
