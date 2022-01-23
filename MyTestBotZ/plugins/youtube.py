@@ -6,16 +6,12 @@ from MyTestBotZ.helper.ytdlfunc import extractYt, create_buttons
 import wget
 import os
 from PIL import Image
-from pyrogram.errors import UserNotParticipant, UserBannedInChannel
-AUTH_USERS = set(int(x) for x in os.environ.get("AUTH_USERS", "1248974748 1401477467").split())
 
     
 ytregex = r"^((?:https?:)?\/\/)?((?:www|m)\.)?((?:youtube\.com|youtu.be))(\/(?:[\w\-]+\?v=|embed\/|v\/)?)([\w\-]+)(\S+)?$"
 
 @Client.on_message(Filters.regex(ytregex))
 async def ytdl(bot, message):
-    if message.from_user.id not in AUTH_USERS:
-        return
     userLastDownloadTime = user_time.get(message.chat.id)
     try:
         if userLastDownloadTime > datetime.now():
@@ -35,10 +31,10 @@ async def ytdl(bot, message):
                                      timedelta(minutes=youtube_next_fetch)
 
     except Exception:
-        await message.reply_text("`Failed To Fetch Youtube Data... 😔 \nPossible Youtube Blocked server ip \n#error`")
+        await message.reply_text("`Failed To Fetch Youtube Data... ðŸ˜” \nPossible Youtube Blocked server ip \n#error`")
         return
     buttons = InlineKeyboardMarkup(list(create_buttons(formats)))
-    sentm = await message.reply_text("Processing Youtube Url 🔎 🔎 🔎")
+    sentm = await message.reply_text("Processing Youtube Url ðŸ”Ž ðŸ”Ž ðŸ”Ž")
     try:
         # Todo add webp image support in thumbnail by default not supported by pyrogram
         # https://www.youtube.com/watch?v=lTTajzrSkCw
